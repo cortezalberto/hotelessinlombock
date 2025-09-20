@@ -1,5 +1,5 @@
 @startuml
-' hide methods
+ hide methods
 ' hide fields
 
 enum Cargos {

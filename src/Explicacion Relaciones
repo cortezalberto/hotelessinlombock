@@ -1,0 +1,33 @@
+1. Herencia (Inheritance):
+
+Persona es una clase abstracta: Esto se indica con la palabra clave abstract. Sirve como una clase base para otras clases, proporcionando atributos comunes como nombre y apellido. No se pueden crear instancias directamente de Persona.
+Cliente hereda de Persona: La clase Cliente extiende ( extends) la clase Persona. Esto significa que Cliente automáticamente tiene los atributos nombre y apellido de Persona, y puede agregar sus propios atributos específicos (como pasaporte y obraSocial). Esta relación se conoce como "es-un" (un Cliente "es-una" Persona).
+Empleado hereda de Persona: Similar a Cliente, la clase Empleado también extiende Persona, heredando nombre y apellido, y añadiendo atributos como cargo y legajo. Un Empleado "es-una" Persona.
+2. Asociación (Association):
+
+Cliente y Pasaporte: Un Cliente puede tener un Pasaporte. La relación es unidireccional: Cliente tiene una referencia a Pasaporte, pero Pasaporte no tiene una referencia directa a Cliente. Esta relación se implementa a través del atributo pasaporte en la clase Cliente. La cardinalidad es de uno a cero o uno (un cliente puede tener un pasaporte o no tener ninguno).
+Cliente y Reserva: Un Cliente realiza múltiples Reservas. La relación se implementa con una lista (List<Reserva>) en la clase Cliente. La relación es bidireccional: Cliente tiene una lista de Reservas, y Reserva tiene una referencia a un Cliente. La cardinalidad es de uno a muchos (un cliente puede tener muchas reservas).
+Cliente y ObraSocial: Un Cliente tiene una ObraSocial. Esta relación se implementa directamente con el atributo obraSocial en la clase Cliente. La cardinalidad es de uno a uno (un cliente tiene una obra social).
+Reserva y Habitacion: Una Reserva es para una Habitacion específica. La relación se implementa con una referencia a Habitacion en la clase Reserva. La cardinalidad es de uno a uno (una reserva es para una habitación).
+Ciudad y Hotel: Una Ciudad contiene múltiples Hotels. Esta relación se implementa con una lista (List<Hotel>) en la clase Ciudad. La relación es bidireccional: Ciudad tiene una lista de Hotels, y Hotel tiene una referencia a la Ciudad en la que está ubicado. La cardinalidad es de uno a muchos (una ciudad puede contener muchos hoteles).
+Hotel y Habitacion: Un Hotel tiene múltiples Habitaciones. Esta relación se implementa con una lista (List<Habitacion>) en la clase Hotel. La cardinalidad es de uno a muchos (un hotel puede tener muchas habitaciones).
+Hotel y Empleado: Un Hotel emplea múltiples Empleados. Esta relación se implementa con una lista (List<Empleado>) en la clase Hotel. La cardinalidad es de uno a muchos (un hotel puede tener muchos empleados).
+Empleado y Legajo: Un Empleado tiene un Legajo . Esta relación se implementa con una referencia a Legajo en la clase Empleado. La cardinalidad es de uno a uno (un empleado tiene un legajo).
+Empleado y Cargos: Un Empleado tiene un Cargos. La relación se implementa directamente con el atributo cargo en la clase Empleado. La cardinalidad es de uno a uno (un empleado tiene un cargo).
+Legajo y Empleado: Un Legajo pertenece a un Empleado. Esta relación se implementa con una referencia a Empleado en la clase Legajo. La cardinalidad es de uno a uno (un legajo pertenece a un empleado).
+Habitacion y Reserva: Una Habitacion tiene multiples Reservas. Esta relación se implementa con una lista (List<Reserva>) en la clase Habitacion.
+3. Cardinalidad (Cardinality):
+
+La cardinalidad describe cuántas instancias de una clase pueden estar relacionadas con una instancia de otra clase.  En este código, las cardinalidades más comunes son:
+
+Uno a uno (1:1): Un Empleado tiene un Legajo, y un Legajo pertenece a un Empleado. Un Cliente tiene una ObraSocial.
+Uno a muchos (1:N): Una Ciudad contiene muchos Hotels. Un Hotel tiene muchas Habitaciones. Un Hotel emplea muchos Empleados. Un Cliente realiza muchas Reservas. Una Habitacion tiene muchas Reservas.
+Cero o uno a uno (0..1:1): Un Cliente puede o no tener un Pasaporte.
+Resumen:
+
+El código representa un sistema de gestión de hoteles con clases para modelar personas, clientes, empleados, reservas, habitaciones, hoteles y ciudades.  Las relaciones entre estas clases definen cómo interactúan y se relacionan entre sí dentro del sistema. El uso de listas y referencias a objetos permite representar relaciones complejas, como la relación entre un hotel y sus habitaciones, o entre un cliente y sus reservas. Las enumeraciones permiten definir tipos de datos fijos y controlados, como los cargos de los empleados y las obras sociales de los clientes.
+
+Regenerar
+Copiar
+Buena respuesta
+Mala respuesta
