@@ -1,0 +1,144 @@
+@startuml
+' hide methods
+' hide fields
+
+enum Cargos {
+    Gerente
+    Administrativo
+    Conserje
+}
+
+enum ObraSocial {
+    OSDE
+    PAMI
+    SANCOR
+}
+
+abstract class Persona {
+    # String nombre
+    # String apellido
+    + Persona(String nombre, String apellido)
+    + String getNombre()
+    + String getApellido()
+    + String toString()
+}
+
+class Cliente extends Persona {
+    - Pasaporte pasaporte
+    - List<Reserva> reservas
+    - ObraSocial obraSocial
+    + Cliente(String nombre, String apellido, ObraSocial obraSocial)
+    + void setPasaporte(Pasaporte pasaporte)
+    + Pasaporte getPasaporte()
+    + void agregarReserva(Reserva reserva)
+    + List<Reserva> getReservas()
+    + ObraSocial getObraSocial()
+    + String toString()
+}
+
+class Pasaporte {
+    - String numero
+    + Pasaporte(String numero)
+    + String getNumero()
+    + String toString()
+}
+
+class Reserva {
+    - Cliente cliente
+    - Habitacion habitacion
+    - LocalDate checkIn
+    - LocalDate checkOut
+    - BigDecimal precio
+    + Reserva(Cliente cliente, Habitacion habitacion, LocalDate checkIn, LocalDate checkOut, BigDecimal precio)
+    + Cliente getCliente()
+    + Habitacion getHabitacion()
+    + LocalDate getCheckIn()
+    + LocalDate getCheckOut()
+    + BigDecimal getPrecio()
+    + void asignar()
+    + String toString()
+    + boolean equals(Object o)
+    + int hashCode()
+}
+
+class Ciudad {
+    - String nombre
+    - List<Hotel> hoteles
+    + Ciudad(String nombre)
+    + String getNombre()
+    + void agregarHotel(Hotel hotel)
+    + List<Hotel> getHoteles()
+    + List<Hotel> getInternalHoteles()
+    + String toString()
+}
+
+class Hotel {
+    - String nombre
+    - Ciudad ciudad
+    - List<Habitacion> habitaciones
+    - List<Empleado> empleados
+    + Hotel(String nombre)
+    + String getNombre()
+    + Ciudad getCiudad()
+    + void setCiudad(Ciudad ciudad)
+    + Habitacion crearHabitacion(int numero, String tipo)
+    + void agregarEmpleado(Empleado empleado)
+    + List<Habitacion> getHabitaciones()
+    + List<Empleado> getEmpleados()
+    + String toString()
+}
+
+class Habitacion {
+    - int numero
+    - String tipo
+    - Hotel hotel
+    - List<Reserva> reservas
+    + Habitacion(int numero, String tipo, Hotel hotel)
+    + int getNumero()
+    + String getTipo()
+    + Hotel getHotel()
+    + List<Reserva> getReservas()
+    + void agregarReserva(Reserva reserva)
+    + String toString()
+}
+
+class Empleado extends Persona {
+    - Cargos cargo
+    - Legajo legajo
+    + Empleado(String nombre, String apellido, Cargos cargo)
+    + Cargos getCargo()
+    + void setCargo(Cargos cargo)
+    + Legajo getLegajo()
+    + void setLegajo(Legajo legajo)
+    + String toString()
+}
+
+class Legajo {
+    - String numero
+    - Empleado empleado
+    + Legajo(String numero)
+    + String getNumero()
+    + Empleado getEmpleado()
+    + void setEmpleado(Empleado empleado)
+    + String toString()
+}
+
+' Relationships
+Cliente -- Pasaporte : has >
+Cliente -- ObraSocial : has >
+Cliente "1" -- "*" Reserva : makes
+Reserva -- Cliente : for >
+Reserva -- Habitacion : in >
+Ciudad "1" -- "*" Hotel : contains
+Hotel "1" -- "*" Habitacion : has
+Hotel "1" -- "*" Empleado : employs
+Habitacion "1" -- "*" Reserva : has
+Empleado -- Cargos : has >
+Empleado -- Legajo : has >
+Legajo -- Empleado : assigned to >
+
+
+
+Hotel -- Ciudad : located in >
+
+@enduml

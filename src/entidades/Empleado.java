@@ -1,4 +1,4 @@
-package personas;
+package entidades;
 
 import java.util.Objects;
 

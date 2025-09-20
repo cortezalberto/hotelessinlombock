@@ -1,4 +1,4 @@
-import personas.*;
+import entidades.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
